@@ -899,6 +899,21 @@ function poseOtto(t, dt, near, hw, spK, B) {
 const camPos = V(), camLook = V(), camOff = V(), lookOff = V(), tgtPos = V(), tgtLook = V(), qT = new THREE.Quaternion(), m4 = new THREE.Matrix4(), qRoll = new THREE.Quaternion(), ZAX = V(0, 0, 1);
 let first = true, last = performance.now(), t0 = performance.now();
 const _p = V(), _tg = V(), _tgp = V(), _bp = V(), _bl = V(), _sx = V(), ACCC = new THREE.Color(ACC);
+// A nudge to go on: once Otto has finished with what is in view (or after a while with no scrolling), a line at the
+// bottom says where the next scroll leads. Never in the last world, never while he talks, gone the moment you move.
+const HINT = { el: $("#hint"), to: $("#hint .hint-to"), on: false, idle: performance.now() };
+const WORLD = ["", "Hello", "About", "What I make", "Work", "Let's talk"];
+const hintOff = () => { HINT.idle = performance.now(); if (HINT.on) { HINT.on = false; HINT.el.classList.remove("on"); } };
+["wheel", "touchstart", "keydown", "scroll"].forEach((ev) => addEventListener(ev, hintOff, { passive: true }));
+function hint(now, zone, inWorm) {
+  const settled = Math.abs(S.st - S.s) < 0.004, said = (NARR.said && NARR.said === NARR.view) || zone === 0;
+  const want = S.started && S.s >= BOOT_S - 0.01 && zone < N - 1 && !inWorm && settled && now > NARR.until && now - Math.max(NARR.until, HINT.idle) > (said ? 2600 : 7000);
+  if (want && !HINT.on) {
+    const nx = STOPS.find((v) => v > S.st + 0.02), nz = nx === undefined ? zone : zoneAt(uOfS(nx));
+    HINT.to.innerHTML = zone === 0 ? "to start the tour" : nz > zone ? "on to <b>" + WORLD[nz] + "</b>" : "to see more";
+  }
+  if (want !== HINT.on) { HINT.on = want; HINT.el.classList.toggle("on", want); }
+}
 function frame(now) {
   const dt = Math.min((now - last) / 1000, 0.05); last = now; const t = (now - t0) / 1000;
   if (S.started) adapt(now);   // before anything is drawn: a resize clears the canvas
@@ -1040,6 +1055,7 @@ function frame(now) {
   if (cur !== lastCur) { lastCur = cur; roomBtns.forEach((b) => b.setAttribute("aria-current", String(+b.dataset.go === cur))); }
   if (s > 0.08) $("#cue").classList.remove("on");
   if (s > BOOT_S) $("#skip").classList.remove("on");
+  hint(now, zone, inWorm);
   if (hw > 0.8) showAsk(zone);
   $("#ask").classList.toggle("on", S.started && hw > 0.8);
   if (S.started && zone >= 1) guide(zone, u, E, hks, inWorm, now, spK > 0.45);

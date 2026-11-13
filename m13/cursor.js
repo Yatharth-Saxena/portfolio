@@ -24,7 +24,9 @@ export function createCursor({ reduced = false } = {}) {
   const setMode = (m) => { if (m !== mode) { mode = m; root.dataset.m = m; } };
   // only what can really be pressed counts: something faded out, hidden or switched off (the start screen after
   // Start, a label as it leaves) does not keep the ring round it
-  const live = (el) => { for (let e = el; e && e !== document.body; e = e.parentElement) { if (e.classList.contains("gone")) return false; const cs = getComputedStyle(e); if (cs.visibility === "hidden" || cs.display === "none" || +cs.opacity < 0.05 || cs.pointerEvents === "none") return false; } return true; };
+  // (only the element itself must take the pointer: the HUD and the labels sit inside layers that let clicks pass
+  // through to the 3D, and an ancestor check made every control in the tour look dead)
+  const live = (el) => { if (getComputedStyle(el).pointerEvents === "none") return false; for (let e = el; e && e !== document.body; e = e.parentElement) { if (e.classList.contains("gone")) return false; const cs = getComputedStyle(e); if (cs.visibility === "hidden" || cs.display === "none" || +cs.opacity < 0.05) return false; } return true; };
   const pick = (t) => {
     if (!t || !t.closest) return [null, "free"];
     let el = t.closest(TEXT); if (el && live(el)) return [el, "text"];

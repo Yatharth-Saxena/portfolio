@@ -1,0 +1,30 @@
+# This repository is public. What stays out of it:
+
+# installed packages and builds (Cloudflare builds the site from the source on every push)
+node_modules/
+dist/
+site/
+.wrangler/
+
+# headless-browser profiles left by screenshot runs (caches and preferences)
+chprof-*/
+
+# working screenshots and design-tool output
+mockup-shots/
+.taste-skill/
+.impeccable/
+
+# never public: previews of client sites, and the notes with prices and earnings
+public/img/aashi-*
+public/img/drona-*
+CONTENT.md
+
+# voice experiments (scripts/voice-samples.mjs makes them again)
+public/voice-samples/
+
+# local only
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db

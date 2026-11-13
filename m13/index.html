@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en" class="red"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yatharth Saxena · Full-stack developer</title>
+<meta name="description" content="Yatharth Saxena, full-stack developer in Greater Noida. A tour of his work, guided by Otto, the robot he built.">
+<meta name="theme-color" content="#020203">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%23b3121f%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2245%22%20text-anchor%3D%22middle%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2238%22%20fill%3D%22%23fff%22%3EY.%3C%2Ftext%3E%3C%2Fsvg%3E">
+<meta property="og:type" content="website"><meta property="og:title" content="Yatharth Saxena · Full-stack developer">
+<meta property="og:description" content="A tour of his work, guided by Otto, the robot he built.">
+<meta name="twitter:card" content="summary">
+<script>
+/* before the first paint: the colour (red; ?c=blue for cobalt), the compact layout for phones and small windows,
+   touch, and whether this browser can draw the 3D at all (three.js needs WebGL 2) */
+(function () {
+  var d = document.documentElement, q = new URLSearchParams(location.search);
+  if (q.get("c") === "blue") d.classList.remove("red");
+  var touch = matchMedia("(pointer: coarse)").matches; if (touch) d.classList.add("touch");
+  /* (an upright tablet too: the labels need the bottom band there as well) */
+  var c = function () { d.classList.toggle("compact", innerWidth <= 760 || innerHeight <= 520 || (touch && innerWidth < innerHeight && innerWidth <= 1100)); }; c(); addEventListener("resize", c);
+  try { var g = document.createElement("canvas").getContext("webgl2"); if (!g) throw 0; var x = g.getExtension("WEBGL_lose_context"); if (x) x.loseContext(); } catch (e) { d.classList.add("nogl"); }
+  setTimeout(function () { var g = document.getElementById("gate"); if (g && !g.classList.contains("ready")) g.classList.add("slow"); }, 20000);
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#020203;--ink:#f4f4f5;--soft:#c6c8ce;--dim:#8f9198;--acc:#2350ff;--acc-hi:#4569ff;--acc-ink:#8ea4ff;--pad:clamp(18px,2.4vw,36px);--ease:cubic-bezier(.22,1,.36,1);--mx:0;--my:0}
+html.red{--acc:#b3121f;--acc-hi:#d11a28;--acc-ink:#ff6b74}
+*,*::before,*::after{box-sizing:border-box;margin:0}
+html,body{background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+body{font:400 16px/1.55 Geist,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--acc);color:#fff}
+/* the browser's scrollbar is hidden: the journey has its own (m13/scrollbar.js) */
+html{scrollbar-width:none}html::-webkit-scrollbar{display:none;width:0}
+.sb{position:fixed;right:14px;top:50%;height:52vh;width:30px;margin-top:-26vh;z-index:30;opacity:0;transform:translateX(8px);transition:opacity .8s var(--ease),transform .8s var(--ease);touch-action:none}
+.sb.on{opacity:1;transform:none}.sb.on.idle:not(:hover){opacity:.42}
+.sb-track,.sb-fill{position:absolute;right:14px;top:0;width:1px;height:100%;border-radius:1px;transform-origin:50% 0;pointer-events:none}
+.sb-track{background:rgba(255,255,255,.16);transition:width .35s var(--ease),right .35s var(--ease)}
+.sb-fill{background:linear-gradient(to bottom,transparent,color-mix(in srgb,var(--acc-ink) 70%,transparent));transform:scaleY(0)}
+.sb:hover .sb-track,.sb.drag .sb-track{width:2px;right:13.5px;background:rgba(255,255,255,.24)}
+.sb-thumb{position:absolute;right:11px;top:0;width:7px;height:7px;border-radius:4px;background:#fff;box-shadow:0 0 0 .5px rgba(0,0,0,.4),0 0 12px color-mix(in srgb,var(--acc-ink) 80%,transparent);pointer-events:none;will-change:transform}
+/* the comet: a tail behind the thumb, the way it came */
+.sb-thumb::after{content:"";position:absolute;left:2px;width:3px;height:var(--tail,0px);border-radius:2px;opacity:0;transition:opacity .25s}
+.sb-thumb.fast::after{opacity:.9}
+.sb-thumb.down::after{bottom:3px;background:linear-gradient(to top,color-mix(in srgb,var(--acc-ink) 90%,transparent),transparent)}
+.sb-thumb.up::after{top:3px;background:linear-gradient(to bottom,color-mix(in srgb,var(--acc-ink) 90%,transparent),transparent)}
+.sb-mark{position:absolute;right:0;width:30px;height:16px;margin-top:-8px;display:flex;align-items:center;justify-content:flex-end;padding:0}
+.sb-mark i{position:absolute;right:12px;width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.38);transition:background-color .4s,box-shadow .4s}
+.sb-mark.cur i{background:var(--acc-ink);box-shadow:0 0 10px var(--acc-ink)}
+.sb-mark span{position:absolute;right:28px;white-space:nowrap;font:500 12px/1 Geist,sans-serif;color:var(--soft);opacity:0;transform:translateX(6px);transition:opacity .35s var(--ease),transform .35s var(--ease);pointer-events:none;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.sb:hover .sb-mark span,.sb-mark.cur span{opacity:1;transform:none}.sb:not(:hover) .sb-mark.cur span{opacity:.75}
+.sb-mark:hover i{background:#fff}.sb-mark:hover span{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.sb,.sb-mark span,.sb-track{transition:none}}
+/* the cursor (m13/cursor.js): a dot and a ring that becomes a highlight round whatever you can press */
+.has-cur,.has-cur *{cursor:none!important}
+.cur{position:fixed;inset:0;pointer-events:none;z-index:2147483000;opacity:0;transition:opacity .35s;contain:layout style}
+.cur.on{opacity:1}
+.cur-ring{position:absolute;left:0;top:0;width:34px;height:34px;border-radius:17px;box-sizing:border-box;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.035);box-shadow:0 0 0 .5px rgba(0,0,0,.35),0 8px 24px -12px rgba(0,0,0,.7);will-change:transform,width,height;transition:border-color .3s var(--ease),background-color .3s var(--ease),box-shadow .3s var(--ease)}
+.cur-dot{position:absolute;left:-3px;top:-3px;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 0 .5px rgba(0,0,0,.4),0 0 10px rgba(255,255,255,.35);will-change:transform;transition:opacity .2s}
+.cur[data-m="link"] .cur-ring{border-color:color-mix(in srgb,var(--acc-ink) 85%,transparent);background:color-mix(in srgb,var(--acc) 16%,transparent);box-shadow:0 0 0 .5px rgba(0,0,0,.3),0 0 22px -4px color-mix(in srgb,var(--acc) 55%,transparent)}
+.cur[data-m="link"] .cur-dot,.cur[data-m="text"] .cur-dot{opacity:0}
+.cur[data-m="text"] .cur-ring{background:#fff;border-color:transparent;box-shadow:0 0 8px rgba(255,255,255,.4)}
+.cur[data-m="tile"] .cur-ring{border-color:rgba(255,255,255,.32);background:rgba(255,255,255,.045)}
+.cur.down .cur-ring{border-color:var(--acc-ink)}
+.cur-ripple{position:absolute;left:-17px;top:-17px;width:34px;height:34px;border-radius:50%;border:1px solid var(--acc-ink);animation:cur-ripple .55s var(--ease) forwards}
+@keyframes cur-ripple{from{transform:translate(var(--x),var(--y)) scale(.5);opacity:.85}to{transform:translate(var(--x),var(--y)) scale(2.4);opacity:0}}
+@media (prefers-reduced-motion:reduce){.cur-ripple{animation:none;opacity:0}}
+:focus-visible{outline:2px solid var(--acc-ink);outline-offset:4px;border-radius:6px}
+.disp{font-family:"Instrument Serif",Georgia,serif;font-weight:400;line-height:.92;letter-spacing:-.02em}
+.disp em{font-style:italic}
+#gl{position:fixed;left:0;top:0;width:100vw;height:100vh;display:block;z-index:0}
+#track{position:relative;z-index:-1;width:1px}
+
+/* buttons: one fill, fully round, decided once */
+.pill{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:999px;font:500 15px Geist,sans-serif;white-space:nowrap;transition:background-color .3s,box-shadow .3s,color .3s}
+.pill.solid{background:var(--acc);color:#fff}.pill.solid:hover{background:var(--acc-hi)}
+.pill.line{box-shadow:inset 0 0 0 1px rgba(255,255,255,.3);color:var(--ink);background:rgba(0,0,0,.18)}.pill.line:hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.6);background:rgba(255,255,255,.06)}
+.pill.sm{height:38px;padding:0 15px;font-size:14px}
+.pill .ar{transition:transform .4s var(--ease)}.pill:hover .ar{transform:translateX(3px)}
+.ic{flex:none;display:inline-block;vertical-align:-.18em}
+
+/* liquid glass: a thick clear slab over the live 3D, not frosted plastic.
+   - the body is drawn in WebGL, in the final pass (tour.js): the scene softened, with Apple's saturation
+     lift, and along the rim bent inward the way a thick rounded slab bends light, the colours parting slightly.
+     It costs almost nothing there, where a browser backdrop-filter re-blurs the canvas every frame.
+   - here, on the page: a faint dark tint for the words (no gradient fill), and
+   - the rim: a specular catch round the edge, brightest where the light falls (upper left; a fixed light,
+     since one that followed the cursor would repaint every rim on every move), a weaker catch opposite
+   - the thickness: a soft inner light along the top, a darker inner fall along the bottom */
+.glass{position:relative;border-radius:28px;background:rgba(10,12,18,.2);isolation:isolate;
+  box-shadow:0 34px 70px -44px rgba(0,0,0,.75)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.2px;pointer-events:none;z-index:2;
+  background:conic-gradient(from 292deg,rgba(255,255,255,.9),rgba(255,255,255,.34) 9%,rgba(255,255,255,.07) 24%,rgba(255,255,255,.05) 38%,rgba(255,255,255,.36) 50%,rgba(255,255,255,.07) 63%,rgba(255,255,255,.06) 80%,rgba(255,255,255,.4) 92%,rgba(255,255,255,.9));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;
+  box-shadow:inset 0 1.5px 1px -1px rgba(255,255,255,.5),inset 0 22px 28px -26px rgba(255,255,255,.22),inset 0 -22px 30px -26px rgba(0,0,0,.45),inset 0 0 0 .5px rgba(255,255,255,.06)}
+
+/* the HUD */
+.hud{position:fixed;inset:0;z-index:10;pointer-events:none;opacity:0;transition:opacity 1s var(--ease)}
+.hud.on{opacity:1}
+.hud a,.hud button{pointer-events:auto}
+.bar{position:absolute;inset:0 0 auto;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad)}
+.mark{font-size:30px}
+.bar nav{display:flex;align-items:center;gap:28px;font-size:15px}
+.bar nav>a:not(.pill),.bar nav>button{color:var(--soft);transition:color .3s}.bar nav>a:not(.pill):hover,.bar nav>button:hover{color:var(--ink)}
+.bar .pill{height:42px;padding:0 18px;font-size:14px}
+.where{position:absolute;left:var(--pad);top:84px;font-size:14px;line-height:1.45;color:var(--soft)}
+.where b{font-weight:400;color:var(--ink)}
+.where b::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc);margin-right:9px;translate:0 -1px}
+.rooms{position:absolute;right:var(--pad);bottom:calc(var(--pad) - 4px);display:flex;gap:20px;font-size:14px}
+.rooms button{color:rgba(244,244,245,.42);transition:color .4s}.rooms button:hover{color:var(--soft)}
+.rooms button[aria-current="true"]{color:var(--ink)}
+.sub{position:absolute;left:50%;bottom:clamp(82px,11.5vh,118px);translate:-50% 0;max-width:min(760px,86vw);text-align:center;font:500 clamp(16px,1.25vw,18px)/1.45 Geist,sans-serif;color:#fff}
+.sub span{background:none}
+.sub i{font-style:normal;opacity:0;transition:opacity .25s;text-shadow:0 1px 2px rgba(0,0,0,.95),0 0 16px rgba(0,0,0,.9),0 0 30px rgba(0,0,0,.6)}.sub i.on{opacity:1}
+.ask{position:absolute;left:50%;bottom:calc(var(--pad) - 8px);translate:-50% 0;display:flex;gap:8px;opacity:0;transition:opacity .5s}
+.ask.on{opacity:1}.ask:not(.on) button{pointer-events:none}
+.ask button{height:34px;padding:0 15px;border-radius:999px;background:rgba(8,8,10,.72);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);font-size:13px;color:var(--soft);white-space:nowrap;transition:color .3s,box-shadow .3s}
+.ask button:hover{color:var(--ink);box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+/* narrower screens: the question chips sit at the left, clear of the section menu on the right */
+@media (max-width:1500px){.ask{left:var(--pad);translate:0 0}}
+.cue{position:absolute;left:50%;bottom:clamp(82px,11.5vh,118px);translate:-50% 0;font-size:15px;color:var(--soft);opacity:0;transition:opacity .8s;display:flex;align-items:center;gap:12px}
+.cue.on{opacity:1}.cue b{font-weight:500;color:var(--ink)}
+/* while the scroll cue shows, subtitles sit above it */
+.sub{transition:bottom .6s var(--ease)}.cue.on ~ .sub{bottom:calc(clamp(82px,11.5vh,118px) + 54px)}
+.cue i{width:1px;height:28px;background:linear-gradient(transparent,var(--ink));animation:drip 1.8s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* (no CSS filters on anything in the 3D layer: it moves every frame, and a filter makes the browser repaint it
+   every frame; the drop-shadow alone cost half the frame rate) */
+/* the dimensions. Each one has a headline block (lower left) and labels pinned to the things in it: a dot
+   on the thing, a hairline leader, a small glass tag. They follow the camera, so they move with the world. */
+.crisp{position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:1;pointer-events:none;visibility:hidden;will-change:transform}
+.css3d{position:fixed!important;inset:0;z-index:2;pointer-events:none}
+.fig img{display:block;width:832px;height:760px;-webkit-mask-image:linear-gradient(to top,transparent 0,#000 24%);mask-image:linear-gradient(to top,transparent 0,#000 24%)}
+.fig.ref{opacity:.15;-webkit-mask-image:linear-gradient(to bottom,#000,transparent 72%);mask-image:linear-gradient(to bottom,#000,transparent 72%)}
+.fig.ref img{transform:scaleY(-1);-webkit-mask-image:none;mask-image:none}
+.photo{position:relative;overflow:hidden;background:#05060a}
+.photo img{display:block;width:100%;height:100%;object-fit:cover}
+.photo img.turn{position:absolute;left:50%;top:50%;object-fit:fill;transform:translate(-50%,-50%) rotate(-90deg)}
+.photo::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(155deg,rgba(255,255,255,.1),rgba(255,255,255,0) 36%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),inset 0 0 40px rgba(0,0,0,.35)}
+.pin .tag{transition:translate .5s var(--ease)}.pin.live .tag:hover{translate:0 -3px}
+.num{font:400 520px/1 "Instrument Serif",Georgia,serif;letter-spacing:-.03em;white-space:nowrap;color:transparent;background:linear-gradient(172deg,#fffaf2 0%,#e9e1d4 24%,#a89c8c 46%,#f6efe4 53%,#8d8274 70%,#4d463f 100%);-webkit-background-clip:text;background-clip:text}
+.dim{position:fixed;inset:0;z-index:5;pointer-events:none;visibility:hidden}
+.vh{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* the location notification: a glass capsule at the top centre (its size and motion are set by the script) */
+.loc-wrap{position:absolute;left:0;right:0;top:18px;display:flex;justify-content:center;pointer-events:none}
+.loc.glass{width:46px;height:46px;border-radius:999px;overflow:hidden;display:flex;align-items:center;justify-content:center;opacity:0;background:rgba(10,12,18,.34);box-shadow:0 18px 40px -24px rgba(0,0,0,.8)}
+.loc-in{flex:none;padding:0 34px;text-align:center;white-space:nowrap;opacity:0}
+.loc-t{font:400 30px/1.05 "Instrument Serif",Georgia,serif;letter-spacing:-.005em;color:var(--ink)}
+.loc-s{font:400 14px/1.35 Geist,sans-serif;color:var(--soft);margin-top:5px}
+.hello-tag{max-width:380px!important}.hello-tag .lead{font-size:17px;max-width:none}.hello-tag .row{margin-top:16px}
+.head{position:absolute;left:var(--pad);bottom:clamp(118px,16vh,160px);max-width:min(560px,42vw);padding:clamp(24px,2.4vw,40px);opacity:0}
+.head.live,.pin.live .tag{pointer-events:auto}
+.head h1{font-size:clamp(64px,6.4vw,118px)}.head h1 span{display:block}.head h1 span+span{padding-left:.35em}
+.head h2{font-size:clamp(48px,4.2vw,76px)}
+.head .lead{margin-top:clamp(14px,1.6vw,22px)}
+.lead{font-size:clamp(17px,1.32vw,21px);line-height:1.45;color:var(--ink);max-width:34ch}
+.lead .acc{color:var(--acc-ink)}
+.note{font-size:14px;color:var(--soft);margin-top:12px}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:clamp(18px,2vw,28px)}
+.statement p{font:400 clamp(26px,2.3vw,40px)/1.18 "Instrument Serif",Georgia,serif;letter-spacing:-.01em;max-width:22ch}
+.statement p em{font-style:italic;color:var(--acc-ink)}
+.pin{position:absolute;left:0;top:0;width:0;height:0;will-change:transform}
+.pin .pi{opacity:0}
+.pin .dot{position:absolute;left:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 0 5px rgba(255,255,255,.16)}
+.pin .ln{position:absolute;left:0;top:0;width:var(--l);height:1px;background:linear-gradient(90deg,rgba(255,255,255,.75),rgba(255,255,255,.35));transform-origin:0 50%;transform:rotate(var(--a))}
+.pin .tag{position:absolute;left:var(--dx);top:var(--dy);transform:translate(0,-50%);width:max-content;max-width:340px;padding:16px 18px 18px;border-radius:20px}
+.pin[data-side="l"] .tag{transform:translate(-100%,-50%)}
+.pin.wide .tag{max-width:420px;padding:20px 22px 22px}
+.tag h3{font:400 30px/.95 "Instrument Serif",Georgia,serif;letter-spacing:-.015em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tag p{font-size:14px;color:var(--soft);line-height:1.45;margin-top:7px}
+.tag .ics{display:flex;gap:9px;font-size:22px;margin-bottom:10px;color:var(--ink)}.tag .ics .ic+.ic{opacity:.75}
+.tag .cap{font-size:15px;color:var(--ink);margin:0}.tag .cap b{font:400 34px/1 "Instrument Serif",serif;margin-right:6px}
+.tag .one{font-size:14.5px;color:var(--soft);margin-top:7px}
+.tag .marks{margin-top:14px}.tag .flow{margin-top:12px}.tag .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chip{font:500 12px Geist,sans-serif;padding:5px 11px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35);letter-spacing:.01em;white-space:nowrap}
+.chip.on{background:var(--acc);box-shadow:none;color:#fff}
+.marks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:clamp(16px,1.6vw,24px)}
+.mk{display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--soft);min-width:0;overflow-wrap:anywhere}
+.mk .ic{font-size:clamp(26px,2.1vw,34px);color:var(--ink)}
+.marks.tech .ic{font-size:clamp(20px,1.6vw,26px);opacity:.8}
+.flow{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;row-gap:12px;margin-top:clamp(14px,1.4vw,20px)}   /* never wider than its card: it wraps */
+.flow .mk{align-items:center;text-align:center;min-width:56px;max-width:92px}
+.flow .to{color:var(--dim);font-size:18px;margin-top:6px}
+.flow + .stack{display:flex;gap:12px;margin-top:12px;font-size:20px;color:var(--soft)}
+.entry .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:clamp(14px,1.4vw,20px)}
+.entry.wide{grid-column:1/-1;display:flex;align-items:center;gap:clamp(20px,3vw,48px)}
+.entry.wide .flow{margin-top:0;align-items:center}
+.entry.wide .flow .mk{flex-direction:row;gap:10px;min-width:0;text-align:left}
+.st{width:7px;height:7px;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.6);flex:none}.st.live{background:var(--acc-ink);box-shadow:none}
+.pill .note2{color:var(--dim);font-size:13px}
+/* let's talk */
+.talk{padding:clamp(30px,3vw,52px)}
+.talk h2{font-size:clamp(72px,7.6vw,140px)}
+.talk .lead{color:var(--soft)}
+.field{display:flex;align-items:center;gap:8px;height:60px;padding:6px 6px 6px 22px;border-radius:999px;background:rgba(6,6,8,.6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.24);margin-top:clamp(20px,2vw,28px)}
+.field:focus-within{box-shadow:inset 0 0 0 1px var(--acc-ink)}
+.field input{flex:1;min-width:0;border:0;background:none;color:var(--ink);font:400 16px Geist,sans-serif;outline:none}
+.field input::placeholder{color:#8f9198}
+.field .pill{height:48px}
+.reach{display:flex;gap:22px;font-size:15px;margin-top:20px;flex-wrap:wrap}.reach a{color:var(--soft);display:inline-flex;align-items:center;gap:8px;transition:color .3s}.reach a:hover{color:var(--ink)}
+.credits{font-size:12px;color:var(--dim);margin-top:10px}.credits summary{cursor:pointer;color:var(--soft)}.credits p{margin-top:6px;line-height:1.5}.credits a{color:var(--soft);text-decoration:underline;text-underline-offset:3px}
+.foot{font-size:13px;color:var(--dim);margin-top:16px}.foot a{color:var(--soft);margin-left:10px;white-space:nowrap}.foot a:hover{color:var(--ink)}
+
+/* the gate: loads, then one button */
+.gate{position:fixed;inset:0;z-index:20;display:grid;place-items:center;text-align:center;background:#020203;transition:opacity 1.2s var(--ease),visibility 1.2s}
+.gate.gone{opacity:0;visibility:hidden}
+.gate .load{font-size:14px;color:var(--soft);letter-spacing:.01em}
+.gate .load b{display:block;font:400 76px/1 "Instrument Serif",serif;color:var(--ink);font-variant-numeric:tabular-nums;margin-top:8px}
+.gate .go{display:none;flex-direction:column;align-items:center;gap:22px}
+.gate.ready .load{display:none}.gate.ready .go{display:flex}
+.start{position:relative;height:60px;padding:0 34px;border-radius:999px;background:var(--ink);color:#050506;font:500 16px Geist,sans-serif;display:inline-flex;align-items:center;gap:12px}
+.start .ar{transition:transform .4s var(--ease)}.start:hover .ar{transform:translateX(4px)}
+.gate .flat{position:absolute;left:50%;bottom:26px;translate:-50% 0;font-size:14px;color:var(--dim);text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.25)}
+
+.skip{position:fixed;right:var(--pad);bottom:calc(var(--pad) + 2vh);z-index:12;font-size:14px;color:var(--soft);opacity:0;pointer-events:none;transition:opacity .8s;text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.3)}
+.skip.on{opacity:1;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){.hud,.gate,.cue i{transition:none;animation:none}}
+
+/* ---- phones, tablets and small windows ---- */
+#gl{height:100vh;height:100lvh}                 /* the large viewport: steady while a phone's bars come and go */
+html{overscroll-behavior-y:none}                /* no pull-to-refresh in the middle of the journey */
+.cue .tc{display:none}.touch .cue .tc{display:inline}.touch .cue .kb{display:none}
+.touch .sb{width:40px}.touch .sb-mark{width:40px;height:30px;margin-top:-15px}
+/* the plain card: for a browser without WebGL 2, without script, or when loading takes too long */
+.plain{display:none;max-width:540px;padding:0 26px;text-align:left}
+.plain .disp{font-size:clamp(54px,12vw,88px)}
+.plain p{margin-top:14px;color:var(--soft);font-size:17px}
+.plain .reach{margin-top:22px;gap:12px 22px}.plain .reach a{color:var(--ink);text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.3)}
+.plain .why{display:none;font-size:13px;color:var(--dim);margin-top:26px}.nogl .plain .why{display:block}
+.nogl .gate .load,.nogl .gate .go,.nogl .gate .wait,.plainon .gate .load,.plainon .gate .go,.plainon .gate .wait{display:none!important}
+.nogl .plain,.plainon .plain{display:block}.nogl #gl{display:none}
+.gate .wait{position:absolute;left:0;right:0;bottom:calc(26px + env(safe-area-inset-bottom));font-size:14px;color:var(--dim);opacity:0;transition:opacity .6s;pointer-events:none}
+.gate.slow:not(.ready) .wait{opacity:1;pointer-events:auto}
+.gate .wait button{color:var(--soft);text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.3)}
+.lost{position:fixed;inset:0;z-index:40;display:grid;place-items:center;align-content:center;gap:18px;padding:24px;text-align:center;background:rgba(2,2,3,.86);color:var(--soft)}
+.lost[hidden]{display:none}
+/* compact (a phone, or a window under 760 px wide or 520 px tall), after the reference's own phone layout: a slim
+   bar on top, the place name under it, the words in a band at the bottom, the rail on the right as the menu */
+.compact .bar{height:56px;top:env(safe-area-inset-top);padding:0 max(16px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left))}
+.compact .mark{font-size:24px;white-space:nowrap}
+.compact .bar nav{gap:14px}.compact .bar nav>a:not(.pill){display:none}
+.compact #snd{font-size:13px;white-space:nowrap}
+.compact .bar .pill{height:36px;padding:0 14px;font-size:13px}
+.compact .where,.compact .rooms{display:none}
+.compact .loc-wrap{top:calc(60px + env(safe-area-inset-top))}
+.compact .loc-in{padding:0 22px;white-space:normal;max-width:calc(100vw - 40px)}
+.compact .loc-t{font-size:24px}.compact .loc-s{font-size:12.5px}
+.compact .sub{bottom:calc(60px + env(safe-area-inset-bottom));max-width:calc(100vw - 32px);font-size:15px}
+.compact .cue{bottom:calc(72px + env(safe-area-inset-bottom));font-size:14px}
+.compact .cue.on ~ .sub{bottom:calc(124px + env(safe-area-inset-bottom))}
+.compact .ask{left:0;right:0;translate:none;bottom:calc(12px + env(safe-area-inset-bottom));padding:0 16px;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent)}
+.compact .ask::-webkit-scrollbar{display:none}.compact .ask button{flex:none;height:36px}
+.compact .skip{right:auto;left:50%;translate:-50% 0;bottom:calc(24px + env(safe-area-inset-bottom))}
+.compact .sb{right:0;height:40vh;margin-top:-20vh}.compact .sb-mark span{display:none}
+/* the labels: placed by the script inside the screen (--tx, --ty), a little smaller */
+.pin.fit .tag,.pin.fit[data-side="l"] .tag{left:var(--tx);top:var(--ty);transform:none}   /* placed by the script (kept on the screen) */
+.compact .pin .tag,.compact .pin[data-side="l"] .tag{left:var(--tx,var(--dx));top:var(--ty,var(--dy));transform:none;max-width:min(calc(100vw - 28px),460px);padding:14px 16px 16px;border-radius:18px}
+.compact .pin.wide .tag{max-width:min(calc(100vw - 28px),480px);padding:16px 16px 18px}
+.compact .hello-tag{max-width:min(calc(100vw - 28px),420px)!important}.compact .hello-tag .lead{font-size:16px}.compact .hello-tag .pill{height:42px;padding:0 18px;font-size:14px}
+.compact .tag h3{font-size:26px}.compact .tag .cap b{font-size:30px}.compact .tag .one{font-size:14px}
+.compact .marks{gap:10px;margin-top:12px}.compact .mk{font-size:11.5px}.compact .mk .ic{font-size:24px}.compact .marks.tech .ic{font-size:19px}
+.compact .flow{gap:8px;row-gap:10px}.compact .flow .mk{min-width:50px}
+/* let's talk: the whole width, from under the bar */
+.compact .head.talk{left:max(14px,env(safe-area-inset-left));right:auto;width:min(calc(100vw - 28px),560px);top:calc(64px + env(safe-area-inset-top));bottom:auto;max-width:none;padding:22px 20px 20px;border-radius:24px;max-height:calc(100% - 196px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain}
+.compact .talk h2{font-size:58px}.compact .talk .lead{font-size:16px}
+.compact .field{height:54px;padding-left:18px}.compact .field .pill{height:42px;padding:0 16px}
+.compact .reach{gap:12px 18px;font-size:14px;margin-top:16px}.compact .foot a{margin:0 12px 0 0}
+@media (orientation:landscape){.compact .marks.tech{display:none}.compact .head.talk{max-height:calc(100% - 64px - 116px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}.compact .talk h2{font-size:46px}}
+</style></head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div id="track"></div>
+
+<div class="gate" id="gate">
+  <div class="load" aria-live="polite">Waking Otto<b id="pct">0</b></div>
+  <div class="go">
+    <button class="start" id="start" type="button">Start exploring <span class="ar">&rarr;</span></button>
+  </div>
+  <div class="plain">
+    <p class="disp">Yatharth Saxena</p>
+    <p>Full-stack developer in Greater Noida, India. I build websites, online stores and apps. Taking freelance projects and SDE roles.</p>
+    <p class="reach"><a href="mailto:yatharthsaxena50@gmail.com">Email</a><a href="https://wa.me/917704833769" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.linkedin.com/in/yatharthsaxena01" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/Yatharth-Saxena" target="_blank" rel="noopener">GitHub</a><a href="/resume.pdf" target="_blank" rel="noopener">Resume</a></p>
+    <p class="why">This browser cannot draw the 3D tour (it needs WebGL 2). Everything above still works.</p>
+  </div>
+  <p class="wait">Still loading on a slow connection? <button type="button" onclick="document.documentElement.classList.add('plainon')">See the short version</button></p>
+</div>
+<noscript><style>.gate .load,.gate .go{display:none}.gate .plain{display:block}</style></noscript>
+
+<div class="hud" id="hud">
+  <header class="bar"><a class="mark disp" href="#" data-go="1">Y. Saxena</a>
+    <nav><a href="#" data-go="4">Work</a><a href="#" data-go="2">About</a><a href="#" data-go="5">Contact</a><button id="snd" type="button">Sound on</button><a class="pill solid" href="#" data-go="5">Start a project</a></nav></header>
+  <p class="where"><b>Greater Noida, India. <span data-time></span></b><br>Taking freelance projects and SDE roles</p>
+  <p class="cue" id="cue"><i></i><span><span class="kb">Scroll</span><span class="tc">Swipe up</span> to <b>wake Otto</b></span></p>
+  <p class="sub" id="sub" aria-live="polite"></p>
+  <div class="ask" id="ask" role="group" aria-label="Ask Otto"></div>
+  <nav class="rooms" id="rooms" aria-label="Rooms"><button data-go="1">Hello</button><button data-go="2">About</button><button data-go="3">What I make</button><button data-go="4">Work</button><button data-go="5">Let's talk</button></nav>
+</div>
+
+<main id="dims">
+<!-- 1 · hello: he rises out of a sea of liquid chrome (drawn in dims.js); his name and line here -->
+<section class="dim" id="dim-1" aria-label="Hello" data-loc="Yatharth Saxena" data-sub="Full-stack developer, Greater Noida">
+  <div class="head vh"><h1>Yatharth Saxena, full-stack developer</h1></div>
+  <div class="pin" data-beat="1" data-side="l" data-at="1.6,3.0,-42" data-dx="-40" data-dy="0"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass hello-tag">
+    <p class="lead"><span class="acc">Full-stack developer.</span> I build websites, online stores and apps that feel as good as they look.</p>
+    <p class="note">Taking freelance projects and SDE roles</p>
+    <div class="row"><a class="pill solid" href="#" data-go="5">Start a project <span class="ar">&rarr;</span></a><a class="pill line" href="/resume.pdf" target="_blank" rel="noopener">Resume</a></div>
+  </div></div></div>
+</section>
+
+<!-- 2 · about: three numbers stand on rock islands (CSS3D); their captions are pinned under them -->
+<section class="dim" id="dim-2" aria-label="About" data-loc="About" data-sub="A third-year computer science student who ships">
+  <div class="head vh"><p>A third-year computer science student who ships: two stores for paying clients, and the voice of an AI that placed at <em>Smart India Hackathon</em>.</p></div>
+  <div class="pin" data-beat="0" data-at="-5.2,0.5,-12" data-dx="78" data-dy="46"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass"><p class="cap"><b>2</b>sites for paying clients</p></div></div></div>
+  <div class="pin" data-beat="1" data-side="l" data-at="6.2,2.1,-36" data-dx="-78" data-dy="50"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass"><p class="cap"><b>3</b>rank in Software, SIH 2026</p></div></div></div>
+  <div class="pin" data-beat="1" data-at="10.6,3.4,-40" data-dx="46" data-dy="74"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass"><p>The Aethon team at the SIH 2026 internal round</p></div></div></div>
+  <div class="pin" data-beat="2" data-at="-4.4,2.7,-60" data-dx="84" data-dy="44"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass"><p class="cap"><b>8.40</b>CGPA, B.Tech CSE</p></div></div></div>
+</section>
+
+<!-- 3 · what I make: five photographs ride the rings of an orrery -->
+<section class="dim" id="dim-3" aria-label="What I make" data-loc="What I make" data-sub="Websites first, and everything a website needs behind it">
+  <div class="head vh"><h2 class="disp">What I <em>make</em></h2><p class="lead">Websites first, and everything a website needs behind it.</p></div>
+  <div class="pin" data-beat="0" data-at="-1.88,5.71,-32.48" data-dx="24" data-dy="84"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass"><div class="ics"><span data-ic="window"></span></div><h3>Websites</h3><p>For businesses and people who want to be remembered.</p></div></div></div>
+  <div class="pin" data-beat="0" data-side="l" data-at="9.1,5.73,-36.15" data-dx="-24" data-dy="-84"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass"><div class="ics"><span data-ic="bag"></span></div><h3>Online stores</h3><p>Carts, orders, delivery checks and WhatsApp.</p></div></div></div>
+  <div class="pin" data-beat="1" data-at="10.92,5.71,-38.53" data-dx="24" data-dy="84"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass"><div class="ics"><span data-ic="react"></span><span data-ic="node"></span><span data-ic="express"></span></div><h3>Apps and APIs</h3><p>React on the front, Node and Express behind.</p></div></div></div>
+  <div class="pin" data-beat="1" data-side="l" data-at="10.49,5.68,-50.29" data-dx="-24" data-dy="-84"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass"><div class="ics"><span data-ic="three"></span><span data-ic="rotate"></span></div><h3>3D and motion</h3><p>Products you can turn over, scroll that feels alive.</p></div></div></div>
+  <div class="pin" data-beat="2" data-side="l" data-at="-2.17,6.69,-55.38" data-dx="-24" data-dy="-84"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass"><div class="ics"><span data-ic="wave"></span><span data-ic="ollama"></span></div><h3>Voice AI</h3><p>Speech in, a local model, speech out.</p></div></div></div>
+</section>
+
+<!-- 4 · work: a gallery; each project hangs in its own cone of light -->
+<section class="dim" id="dim-4" aria-label="Work" data-loc="Work" data-sub="Built for paying clients, at hackathons, and for fun">
+  <div class="head vh"><h2 class="disp">Work</h2><p class="lead">Built for paying clients, at hackathons, and for fun.</p></div>
+  <article class="pin wide" data-beat="0" data-at="-2.0,5.3,-21" data-dx="58" data-dy="34"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass">
+    <h3>Client e-commerce</h3><p class="one">Two online stores, built end to end for paying clients.</p>
+    <div class="marks"><span class="mk"><span data-ic="cart"></span>Cart and orders</span><span class="mk"><span data-ic="pin"></span>Delivery check</span><span class="mk"><span data-ic="whatsapp"></span>WhatsApp</span><span class="mk"><span data-ic="box"></span>3D products</span></div>
+    <div class="marks tech"><span class="mk"><span data-ic="javascript"></span>JavaScript</span><span class="mk"><span data-ic="three"></span>Three.js</span><span class="mk"><span data-ic="braces"></span>Own APIs</span><span class="mk"><span data-ic="cloudflare"></span>Cloudflare</span></div>
+    <div class="links"><a class="pill line sm" href="https://aashienterprises.store" target="_blank" rel="noopener"><i class="st live"></i>Aashi Enterprises <span class="note2">live</span> <span class="ar">&nearr;</span></a><a class="pill line sm" href="https://dronatek.in" target="_blank" rel="noopener"><i class="st"></i>Drona Tek <span class="note2">launching</span> <span class="ar">&nearr;</span></a></div>
+  </div></div></article>
+  <article class="pin wide" data-beat="1" data-side="l" data-at="2.6,5.6,-43" data-dx="-58" data-dy="40"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass">
+    <h3>Aethon <span class="chip on">Rank 3 · SIH 2026</span></h3><p class="one">An AI for space experiments that talks back.</p>
+    <div class="flow"><span class="mk"><span data-ic="mic"></span>Speech</span><span class="to">&rarr;</span><span class="mk"><span data-ic="ollama"></span>Local LLM</span><span class="to">&rarr;</span><span class="mk"><span data-ic="speaker"></span>Voice</span><span class="to"></span><span class="mk"><span data-ic="react"></span>React</span><span class="mk"><span data-ic="three"></span>Three.js</span></div>
+    <div class="links"><a class="pill line sm" href="https://github.com/Yatharth-Saxena/Aethon-AI" target="_blank" rel="noopener" data-ic="github">Aethon code <span class="ar">&nearr;</span></a></div>
+  </div></div></article>
+  <article class="pin wide" data-beat="2" data-at="-0.4,4.4,-61.5" data-dx="54" data-dy="10"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass">
+    <h3>QuickBite <span class="chip">Finalist · VibeCon</span></h3><p class="one">Food ordering with an honest pickup time.</p>
+    <div class="flow"><span class="mk"><span data-ic="people"></span>Walk-in queue</span><span class="to">&rarr;</span><span class="mk"><span data-ic="clock"></span>Pickup time</span><span class="to"></span><span class="mk"><span data-ic="react"></span>React</span><span class="mk"><span data-ic="node"></span>Node</span><span class="mk"><span data-ic="express"></span>Express</span></div>
+    <div class="links"><a class="pill line sm" href="https://github.com/Yatharth-Saxena/QuickBite" target="_blank" rel="noopener" data-ic="github">QuickBite code <span class="ar">&nearr;</span></a></div>
+  </div></div></article>
+  <article class="pin wide" data-beat="3" data-side="l" data-at="2.55,4.8,-87" data-dx="-58" data-dy="34"><div class="pi"><i class="dot"></i><i class="ln"></i><div class="tag glass">
+    <h3>Jarvis <span class="chip">Side project</span></h3><p class="one">Opens apps and searches the web when you ask out loud.</p>
+    <div class="flow"><span class="mk"><span data-ic="mic"></span>Speech to text</span><span class="to">&rarr;</span><span class="mk"><span data-ic="python"></span>Python</span><span class="to">&rarr;</span><span class="mk"><span data-ic="speaker"></span>Text to speech</span></div>
+  </div></div></article>
+</section>
+
+<!-- 5 · let's talk: the chrome orb sends its rings out; the form comes forward on the second beat -->
+<section class="dim" id="dim-5" aria-label="Let's talk" data-loc="Let's talk" data-sub="Tell me what you need">
+  <div class="head glass talk" data-beat="1">
+    <h2 class="disp">Let's <em>talk</em></h2>
+    <p class="lead">Tell me what you need. I reply within a day, and we start with a short call.</p>
+    <form class="field" id="project-form"><input type="text" name="need" placeholder="A store for my bakery, with online orders" aria-label="What do you need?" autocomplete="off"><button class="pill solid" type="submit">Send <span class="ar">&rarr;</span></button></form>
+    <p class="reach"><a href="mailto:yatharthsaxena50@gmail.com" data-ic="mail">Email</a><a href="https://wa.me/917704833769" target="_blank" rel="noopener" data-ic="whatsapp">WhatsApp</a><a href="https://www.linkedin.com/in/yatharthsaxena01" target="_blank" rel="noopener" data-ic="linkedin">LinkedIn</a><a href="https://github.com/Yatharth-Saxena" target="_blank" rel="noopener" data-ic="github">GitHub</a></p>
+    <p class="foot">Designed and built by Yatharth Saxena, 2026. <a href="/resume.pdf" target="_blank" rel="noopener">Open the resume &rarr;</a></p>
+    <details class="credits"><summary>Picture credits</summary><p>SIH and QuickBite photos: from the teams' LinkedIn posts. Device photos with screens set into them (the screens are his site, a sample shop page and his 3D viewer of Otto): <a href="https://commons.wikimedia.org/wiki/File:Reading_mail_at_night_(Unsplash).jpg">Laptop at night</a> by Jay Wennington, CC0; <a href="https://www.rawpixel.com/image/3337524/free-photo-image-cc0-cell-phone-chengdu">Phone in hand</a> by rawpixel, CC0; <a href="https://commons.wikimedia.org/wiki/File:Macbook_Air.png">MacBook Air</a> by 嘉傑, public domain; <a href="https://commons.wikimedia.org/w/index.php?curid=53949809">Wristwatch (in the shop page)</a> by Petar Milošević, CC BY-SA 4.0. Also <a href="https://commons.wikimedia.org/wiki/File:Laptop_Programmcode.jpg">Code on a laptop</a> by Negative Space, CC0; <a href="https://commons.wikimedia.org/wiki/File:Silver_and_black_studio_microphone_condenser.jpg">Studio microphone</a> by Jonathan Velasquez, CC0; <a href="https://commons.wikimedia.org/w/index.php?curid=61688654">Blue condenser microphone</a> by Kelly Sikkema, CC0; <a href="https://commons.wikimedia.org/wiki/File:Delivery_of_parcels_to_an_Allegro_parcel_locker_AL005ETM._Tomasz%C3%B3w_Mazowiecki,_Poland.jpg">Parcel delivery at night</a> by WrS.tm.pl, public domain; <a href="https://www.eso.org/public/images/eso0932a/">The Milky Way</a> by ESO/S. Brunier, CC BY 4.0; <a href="https://commons.wikimedia.org/wiki/File:The_earth_at_night.jpg">The Earth at night</a> by NASA, public domain. Via Wikimedia Commons, rawpixel and ESO.</p></details>
+  </div>
+</section>
+</main>
+
+<button class="skip" id="skip" type="button">Skip the wake-up</button>
+<div class="lost" id="lost" role="alert" hidden><p>The browser paused the 3D to save memory.</p><button class="pill solid" type="button">Reload the tour</button></div>
+<script type="module" src="/m13/tour.js"></script>
+</body></html>

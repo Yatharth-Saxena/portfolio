@@ -1,0 +1,10 @@
+{
+  "name": "otto-voice-tools",
+  "private": true,
+  "description": "The packages for the scripts here (Otto's voice clips, the photo cut-out); not needed to build the site. Install with: npm install --prefix scripts",
+  "dependencies": {
+    "@breezystack/lamejs": "^1.2.7",
+    "kokoro-js": "^1.2.1",
+    "sharp": "^0.34.0"
+  }
+}
